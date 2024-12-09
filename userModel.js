@@ -8,7 +8,7 @@ const tableName = 'users';
 const get = () => {
   return new Promise((resolve, reject) => {
     dataBase.executeQuery(`SELECT * FROM ${tableName}`, (data) => {			
-    resolve(data);
+      resolve(data);
     });
   });
 };
@@ -51,12 +51,12 @@ const insertNewUser = (data) => {
 
   return new Promise((resolve, reject) => {		
     const queryData = `
-    INSERT INTO ${tableName}
-    (name, email, password, createdAt, isActive, activationLink) 
-    VALUES
-    ('${name}', '${email}', '${password}', '${createdAt}', '0', 'null');
+      INSERT INTO ${tableName}
+      (name, email, password, createdAt, isActive, activationLink) 
+      VALUES
+      ('${name}', '${email}', '${password}', '${createdAt}', '0', 'null');
 
-    SELECT MAX(id) AS id FROM ${tableName}
+      SELECT MAX(id) AS id FROM ${tableName}
     `;
 
     dataBase.executeQuery(queryData, (data) => {      
